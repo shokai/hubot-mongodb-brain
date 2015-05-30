@@ -1,4 +1,4 @@
-# export from hubot-redis-brain-hash
+# export from hubot-brain-redis-hash npm
 
 'use strict'
 

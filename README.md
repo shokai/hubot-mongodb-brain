@@ -28,12 +28,19 @@ MongoDB brain for Hubot. Support MongoLab and MongoHQ on heroku.
     % heroku addons:create mongolab
 
 
-## Debug
+## Export / Import
+
+- https://github.com/shokai/hubot-mongodb-brain/tree/master/export-import-tools
+
+
+## Develop
+
+### Debug
 
     % export HUBOT_LOG_LEVEL=debug
 
 
-## Test
+### Test
 
     % npm install
     % npm test
