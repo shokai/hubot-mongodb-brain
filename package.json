@@ -26,5 +26,13 @@
     "grunt-notify": "*",
     "grunt-coffeelint": "*",
     "grunt-contrib-watch": "*"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shokai/hubot-mongodb-brain.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shokai/hubot-mongodb-brain/issues"
+  },
+  "homepage": "https://github.com/shokai/hubot-mongodb-brain"
 }
