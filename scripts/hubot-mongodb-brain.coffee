@@ -52,15 +52,19 @@ module.exports = (robot) ->
     robot.brain.on 'save', (data) ->
       db.collection 'brain', (err, collection) ->
         for k,v of data._private
-          continue if _.isEqual cache[k], v  # skip not modified key
-          robot.logger.debug "save \"#{k}\" into mongodb-brain"
           do (k,v) ->
+            return if _.isEqual cache[k], v  # skip not modified key
+            robot.logger.debug "save \"#{k}\" into mongodb-brain"
             cache[k] = deepClone v
-            collection.count {type: '_private', key: k}, (err, count) ->
-              return robot.logger.error err if err
-              if count > 0
-                collection.update {type: '_private', key: k}, {$set: {value: v}}
-                , (err, res) ->
-                  robot.logger.error err if err
-                return
-              collection.insert {type: '_private', key: k, value: v}
+            collection.update
+              type: '_private'
+              key:  k
+            ,
+              $set:
+                value: v
+            ,
+              upsert: true
+            , (err, res) ->
+              robot.logger.error err if err
+            return
+
