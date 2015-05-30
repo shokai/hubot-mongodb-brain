@@ -7,18 +7,33 @@
     % npm install coffee-script -g
 
 
+## check RedisToGo settings
+
+    % heroku config
+
+
 ## export from [hubot-redis-brain](https://npmjs.com/package/hubot-redis-brain)
 
-    # redistogo
-    % REDISTOGO_URL=(your-redistogo-url) coffee tools/export-redis-brain.coffee > brain.json
+    % REDISTOGO_URL=(your-redistogo-url)    # for redistogo
+    % REDISTOGO_URL=redis://localhost:6379  # for localhost
 
-    # localhost
-    % REDISTOGO_URL=redis://localhost:6379 coffee tools/export-redis-brain.coffee > brain.json
+    # export
+    % coffee export-redis-brain.coffee > brain.json
+
+
+## export from [hubot-brain-redis-hash](https://npmjs.com/package/hubot-brain-redis-hash)
+
+    % REDISTOGO_URL=(your-redistogo-url)    # for redistogo
+    % REDISTOGO_URL=redis://localhost:6379  # for localhost
+
+    # export
+    % coffee export-brain-redis-hash.coffee > brain.json
+
 
 ## import to mongodb-brain
 
-    # mongolab
-    % cat brain.json | MONGOLAB_URL=(your-mongolab-url) coffee tools/import-mongodb-brain.coffee
+    % MONGOLAB_URL=(your-mongolab-url)              # for mongolab
+    % MONGOLAB_URL=mongodb://localhost/hubot-brain  # for localhost
 
-    # localhost
-    % cat brain.json | MONGOLAB_URL=mongodb://localhost/hubot-brain coffee tools/import-mongodb-brain.coffee
+    # import
+    % cat brain.json | coffee import-mongodb-brain.coffee
