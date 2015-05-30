@@ -1,3 +1,7 @@
+=== 0.1.0 2015-05-31
+
+* add import/export tools
+
 === 0.0.3 2015-05-31
 
 * use upsert in collection.update
