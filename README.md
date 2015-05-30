@@ -1,4 +1,5 @@
 # hubot-mongodb-brain
+MongoDB brain for Hubot. Support MongoLab and MongoHQ on heroku.
 
 - https://github.com/shokai/hubot-mongodb-brain
 
