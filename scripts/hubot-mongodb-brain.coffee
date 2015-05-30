@@ -28,6 +28,9 @@ module.exports = (robot) ->
   MongoClient.connect mongoUrl, (err, db) ->
     throw err if err
 
+    robot.brain.on 'close', ->
+      db.close()
+
     robot.logger.info "MongoDB connected"
     robot.brain.setAutoSave false
 
@@ -49,29 +52,18 @@ module.exports = (robot) ->
     robot.brain.on 'save', (data) ->
       db.collection 'brain', (err, collection) ->
         for k,v of data._private
-          continue if _.isEqual cache[k], v  # not changed key
+          continue if _.isEqual cache[k], v  # skip not modified key
           robot.logger.debug "save \"#{k}\" into mongodb-brain"
           do (k,v) ->
             cache[k] = deepClone v
-            collection.count
-              type: '_private'
-              key:  k
-            , (err, count) ->
+            collection.count {type: '_private', key: k}, (err, count) ->
               return robot.logger.error err if err
               if count > 0
-                collection.update
-                  type: '_private'
-                  key:  k
-                ,
-                  $set:
-                    value: v
+                collection.update {type: '_private', key: k}, {$set: {value: v}}
                 , (err, res) ->
-                  return robot.logger.error err if err
+                  robot.logger.error err if err
                 return
               collection.insert
                 type: '_private'
                 key: k
                 value: v
-
-    robot.brain.on 'close', ->
-      db.close()
