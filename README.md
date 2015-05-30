@@ -2,6 +2,7 @@
 
 - https://github.com/shokai/hubot-mongodb-brain
 
+[![Circle CI](https://circleci.com/gh/shokai/hubot-mongodb-brain.svg?style=svg)](https://circleci.com/gh/shokai/hubot-mongodb-brain)
 
 ## Requirements
 
