@@ -1,0 +1,30 @@
+{
+  "name": "hubot-mongodb-brain",
+  "version": "0.0.1",
+  "description": "MongoDB brain for Hubot. Support MongoLab and MongoHQ on heroku",
+  "main": "scripts/hubot-mongodb-brain.coffee",
+  "scripts": {
+    "test": "grunt test",
+    "watch": "grunt"
+  },
+  "keywords": [
+    "hubot",
+    "brain",
+    "mongodb"
+  ],
+  "author": "Sho Hashimoto <hashimoto@shokai.org>",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "*",
+    "mongodb": "*"
+  },
+  "devDependencies": {
+    "coffee-errors": "*",
+    "coffee-script": "^1.9",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-notify": "*",
+    "grunt-coffeelint": "*",
+    "grunt-contrib-watch": "*"
+  }
+}
