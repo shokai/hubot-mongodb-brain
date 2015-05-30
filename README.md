@@ -22,6 +22,10 @@ MongoDB brain for Hubot. Support MongoLab and MongoHQ on heroku.
 [ "hubot-mongodb-brain" ]
 ```
 
+## Debug
+
+    % export HUBOT_LOG_LEVEL=debug
+
 
 ## Test
 
