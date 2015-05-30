@@ -2,6 +2,7 @@
 MongoDB brain for Hubot. Support MongoLab and MongoHQ on heroku.
 
 - https://github.com/shokai/hubot-mongodb-brain
+- https://npmjs.com/package/hubot-mongodb-brain
 
 [![Circle CI](https://circleci.com/gh/shokai/hubot-mongodb-brain.svg?style=svg)](https://circleci.com/gh/shokai/hubot-mongodb-brain)
 
