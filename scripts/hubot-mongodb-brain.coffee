@@ -63,7 +63,4 @@ module.exports = (robot) ->
                 , (err, res) ->
                   robot.logger.error err if err
                 return
-              collection.insert
-                type: '_private'
-                key: k
-                value: v
+              collection.insert {type: '_private', key: k, value: v}
