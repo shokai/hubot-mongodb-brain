@@ -45,7 +45,7 @@ module.exports = (robot) ->
           _private[doc.key] = doc.value
         cache = deepClone _private
         robot.brain.mergeData {_private: _private}
-        robot.brain.resetSaveInterval 30
+        robot.brain.resetSaveInterval 10
         robot.brain.setAutoSave true
 
     ## save data into mongodb
