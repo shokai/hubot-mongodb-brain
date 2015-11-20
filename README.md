@@ -1,10 +1,15 @@
 # hubot-mongodb-brain
-MongoDB brain for Hubot. Support MongoLab and MongoHQ on heroku.
+MongoDB brain for Hubot. Support MongoLab and MongoHQ on Heroku.
 
 - https://github.com/shokai/hubot-mongodb-brain
 - https://npmjs.com/package/hubot-mongodb-brain
 
 [![Circle CI](https://circleci.com/gh/shokai/hubot-mongodb-brain.svg?style=svg)](https://circleci.com/gh/shokai/hubot-mongodb-brain)
+
+## difference betweet `redis-brain`
+
+Hubot's default `redis-brain` saves all data into one large blob (It's not using Redis as KVS) and write it every 20 seconds. So it exceeds `maxmemory` of Redis.
+
 
 ## Requirements
 
