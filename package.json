@@ -1,6 +1,6 @@
 {
   "name": "hubot-mongodb-brain",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MongoDB brain for Hubot. Support MongoLab and MongoHQ on heroku",
   "main": "scripts/hubot-mongodb-brain.coffee",
   "scripts": {
