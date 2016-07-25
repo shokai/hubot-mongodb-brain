@@ -21,6 +21,7 @@ deepClone = (obj) -> JSON.parse JSON.stringify obj
 
 module.exports = (robot) ->
   mongoUrl = process.env.MONGODB_URL or
+             process.env.MONGODB_URI or
              process.env.MONGOLAB_URI or
              process.env.MONGOHQ_URL or
              'mongodb://localhost/hubot-brain'

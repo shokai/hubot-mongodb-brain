@@ -5,6 +5,7 @@ async       = require 'async'
 MongoClient = require('mongodb').MongoClient
 
 mongoUrl = process.env.MONGODB_URL or
+           process.env.MONGODB_URI or
            process.env.MONGOLAB_URI or
            process.env.MONGOHQ_URL or
            'mongodb://localhost/hubot-brain'
