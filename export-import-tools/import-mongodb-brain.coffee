@@ -8,7 +8,7 @@ mongoUrl = process.env.MONGODB_URL or
            process.env.MONGOLAB_URI or
            process.env.MONGOHQ_URL or
            'mongodb://localhost/hubot-brain'
-
+brainCollection = process.env.BRAIN_COLLECTION or 'brain'
 
 MongoClient.connect mongoUrl, (err, db) ->
   throw err if err
@@ -31,9 +31,9 @@ MongoClient.connect mongoUrl, (err, db) ->
         key: k
         value: v
 
-    db.collection 'brain', (err, collection) ->
+    db.collection brainCollection, (err, collection) ->
       collection.drop ->
-        db.createCollection 'brain', (err, collection) ->
+        db.createCollection brainCollection, (err, collection) ->
           async.eachSeries docs, (doc, done) ->
             console.log "insert #{doc.key}"
             collection.insert doc, done
@@ -42,5 +42,3 @@ MongoClient.connect mongoUrl, (err, db) ->
               console.error errs
               process.exit 1
             process.exit 0
-
-
