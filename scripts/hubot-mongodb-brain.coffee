@@ -24,6 +24,7 @@ module.exports = (robot) ->
              process.env.MONGOLAB_URI or
              process.env.MONGOHQ_URL or
              'mongodb://localhost/hubot-brain'
+  brainCollection = process.env.BRAIN_COLLECTION or 'brain'
 
   MongoClient.connect mongoUrl, (err, db) ->
     throw err if err
@@ -37,7 +38,7 @@ module.exports = (robot) ->
     cache = {}
 
     ## restore data from mongodb
-    db.createCollection 'brain', (err, collection) ->
+    db.createCollection brainCollection, (err, collection) ->
       collection.find({type: '_private'}).toArray (err, docs) ->
         return robot.logger.error err if err
         _private = {}
@@ -50,7 +51,7 @@ module.exports = (robot) ->
 
     ## save data into mongodb
     robot.brain.on 'save', (data) ->
-      db.collection 'brain', (err, collection) ->
+      db.collection brainCollection, (err, collection) ->
         for k,v of data._private
           do (k,v) ->
             return if _.isEqual cache[k], v  # skip not modified key
@@ -67,4 +68,3 @@ module.exports = (robot) ->
             , (err, res) ->
               robot.logger.error err if err
             return
-
