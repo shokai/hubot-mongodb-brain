@@ -25,11 +25,11 @@ module.exports = (robot) ->
              process.env.MONGOHQ_URL or
              'mongodb://localhost/hubot-brain'
 
-  var db = null // global var for db connection
+  var db = null
 
   MongoClient.connect mongoUrl, (err, connection) ->
     throw err if err
-    db = connection // assign db global var if no errors
+    db = connection
 
     robot.brain.on 'close', ->
       db.close()
