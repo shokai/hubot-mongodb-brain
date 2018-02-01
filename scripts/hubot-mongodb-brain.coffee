@@ -25,8 +25,11 @@ module.exports = (robot) ->
              process.env.MONGOHQ_URL or
              'mongodb://localhost/hubot-brain'
 
-  MongoClient.connect mongoUrl, (err, db) ->
+  var db = null
+
+  MongoClient.connect mongoUrl, (err, connection) ->
     throw err if err
+    db = connection
 
     robot.brain.on 'close', ->
       db.close()
