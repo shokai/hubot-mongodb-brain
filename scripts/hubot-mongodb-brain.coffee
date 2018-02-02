@@ -16,6 +16,7 @@
 
 _           = require 'lodash'
 MongoClient = require('mongodb').MongoClient
+Url         = require('url')
 
 deepClone = (obj) -> JSON.parse JSON.stringify obj
 
@@ -25,11 +26,16 @@ module.exports = (robot) ->
              process.env.MONGOHQ_URL or
              'mongodb://localhost/hubot-brain'
 
-  MongoClient.connect mongoUrl, (err, db) ->
+  MongoClient.connect mongoUrl, (err, client) ->
     throw err if err
 
     robot.brain.on 'close', ->
-      db.close()
+      client.close()
+
+    urlInfo = Url.parse(mongoUrl)
+
+    db = client.db(if urlInfo.pathname then urlInfo.pathname.replace('/','') \
+      else 'hubot-brain')
 
     robot.logger.info "MongoDB connected"
     robot.brain.setAutoSave false
